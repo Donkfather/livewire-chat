@@ -42,7 +42,7 @@ class Room extends Component
     public function render()
     {
         return view('livewire.room', [
-            'messages' => Message::latest()->take(10)->get()->sortBy('created_at'),
+            'messages' => Message::latest()->take(10)->with('user')->get()->sortBy('created_at'),
             'users'    => User::all(),
             'user'     => auth()->user(),
         ]);
