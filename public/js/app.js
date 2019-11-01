@@ -29106,11 +29106,11 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   wssHost: window.location.hostname,
   wsPort: 6001,
   wssPort: 6001,
-  // enabledTransports: ['ws', 'wss'],
+  enabledTransports: ['ws', 'wss'],
   key: "appkey",
   cluster: "mt1",
   disableStats: true,
-  encrypted: true
+  encrypted: false
 });
 
 /***/ }),
