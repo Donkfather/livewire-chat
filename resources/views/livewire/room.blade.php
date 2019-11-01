@@ -1,8 +1,7 @@
 <div class="h-full">
     <div wire:offline class="font-bold text-black bg-red-500 py-2 text-center"> You are now offline.</div>
     <div class="flex w-full h-full">
-        <div class="w-64 bg-gray-200 h-full p-4">
-            <a class="text-xs" href="{{route('logout')}}">LOGOUT</a>
+        <div class="w-64 bg-gray-200 h-full p-4 hidden sm:block">
             @foreach($users as $people)
                 <div class="mt-3 flex mb-5 items-center">
                     <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
@@ -17,7 +16,10 @@
         </div>
         <div class="flex flex-col w-full">
             <div class="flex-1 flex flex-col px-5 py-2 h-full">
-                <h2 class="font-bold mb-4">Messages ({{$messages->count()}})</h2>
+                <div class="flex justify-between">
+                    <h2 class="font-bold mb-4">Messages ({{$messages->count()}})</h2>
+                    <a class="text-xs" href="{{route('logout')}}">LOGOUT</a>
+                </div>
                 <div class="h-full overflow-y-scroll">
                     @foreach ($messages as $message)
                         @if($user && $user->id == $message->user_id)
