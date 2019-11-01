@@ -26,7 +26,7 @@ window.Echo = new Echo({
     wssHost: window.location.hostname,
     wsPort: 6001,
     wssPort: 6001,
-    enabledTransports: ['ws', 'wss'],
+    enabledTransports: ['ws'],
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: false
