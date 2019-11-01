@@ -29103,8 +29103,8 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 console.log(process.env.MIX_PUSHER_WEBSOCKET_HOSTNAME);
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  wsHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
-  wssHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
+  wsHost: "https://chat.test",
+  wssHost: "https://chat.test",
   wsPort: 443,
   wssPort: 443,
   enabledTransports: ['wss'],
