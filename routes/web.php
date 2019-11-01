@@ -2,6 +2,7 @@
 use App\Http\Controllers\LoginController;
 
 Route::livewire('/','room')->middleware('auth')->name('home');
+Route::redirect('/home','/');
 
 Route::get('/login',[LoginController::class, 'show'])->middleware('guest')->name('login');
 

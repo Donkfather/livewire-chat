@@ -55,7 +55,6 @@
                            class="w-full rounded-lg h-12 mr-3 px-3"
                     />
                     <input type="submit"
-                           {{empty($message) <= 0? 'disabled':''}}
                            class="cursor-pointer bg-blue-400 px-3 rounded-lg text-white font-bold"
                            value="Send"
                     >
