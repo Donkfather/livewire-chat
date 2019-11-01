@@ -1,7 +1,7 @@
 <div class="h-full">
-    <div wire:offline class="font-bold text-black bg-red-500 py-2 text-center"> You are now offline. </div>
+    <div wire:offline class="font-bold text-black bg-red-500 py-2 text-center"> You are now offline.</div>
     <div class="flex w-full h-full">
-        <div wire:poll.300ms class="w-64 bg-gray-200 h-full p-4">
+        <div class="w-64 bg-gray-200 h-full p-4">
             @foreach($users as $people)
                 <div class="flex mb-5 items-center">
                     <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
@@ -17,7 +17,7 @@
         <div class="flex flex-col w-full">
             <div class="flex-1 flex flex-col px-5 py-2 h-full">
                 <h2 class="font-bold mb-4">Messages ({{$messages->count()}})</h2>
-                <div wire:poll.200ms class="h-full overflow-y-scroll">
+                <div class="h-full overflow-y-scroll">
                     @foreach ($messages as $message)
                         @if($user && $user->id == $message->user_id)
                             <div class="flex flex-row-reverse ml-auto">
@@ -47,7 +47,8 @@
                            class="w-full rounded-lg h-12 mr-3 px-3"
                     />
                     <input type="submit"
-                           class="bg-blue-400 px-3 rounded-lg text-white font-bold"
+                           {{strlen($message) <= 3? 'disabled':''}}
+                           class="cursor-pointer bg-blue-400 px-3 rounded-lg text-white font-bold"
                            value="Send"
                     >
                 </form>
