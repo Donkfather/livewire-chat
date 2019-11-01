@@ -22,8 +22,8 @@ window.Pusher = require('pusher-js');
 console.log(process.env.MIX_PUSHER_WEBSOCKET_HOSTNAME)
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    wsHost: process.env.MIX_PUSHER_WEBSOCKET_HOSTNAME,
-    wssHost: process.env.MIX_PUSHER_WEBSOCKET_HOSTNAME,
+    wsHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
+    wssHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
     wsPort: 443,
     wssPort: 443,
     enabledTransports: ['wss'],
