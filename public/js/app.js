@@ -29100,10 +29100,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+console.log(process.env.MIX_PUSHER_WEBSOCKET_HOSTNAME);
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  wsHost: process.env.MIX_WEBSOCKET_HOSTNAME,
-  wssHost: process.env.MIX_WEBSOCKET_HOSTNAME,
+  wsHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
+  wssHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
   wsPort: 443,
   wssPort: 443,
   enabledTransports: ['wss'],
