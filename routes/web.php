@@ -1,21 +1,14 @@
 <?php
+use App\Http\Controllers\LoginController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::livewire('/','room')->middleware('auth')->name('home');
 
-Route::livewire('/','room');
-Route::get('/login', function (){
-    \Auth::login(factory(\App\User::class)->create());
-    return redirect('/');
-});
+Route::get('/login',[LoginController::class, 'show'])->middleware('guest')->name('login');
+
+Route::get('/login/facebook', [LoginController::class, 'redirectToProvider'])->name('login.facebook');
+Route::get('/login/facebook/callback', [LoginController::class, 'handleProviderCallback'])->name('login.facebook.callback');
+
 Route::get('/logout', function (){
     \Auth::logout();
-});
+    return redirect()->route('login');
+})->name('logout');

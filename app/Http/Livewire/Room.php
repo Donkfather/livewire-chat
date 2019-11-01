@@ -15,10 +15,17 @@ class Room extends Component
         'echo:messages,NewMessage'              => '$refresh',
     ];
 
+    public function updatedMessage()
+    {
+        $this->validate([
+            'message' => 'min:1|max:250'
+        ]);
+    }
+
     public function sendMessage()
     {
         $this->validate([
-            'message' => 'required|min:3|max:250',
+            'message' => 'required|min:1|max:250',
         ]);
 
         Message::create([

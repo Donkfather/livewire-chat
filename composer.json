@@ -12,8 +12,10 @@
         "beyondcode/laravel-websockets": "^1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
+        "laravel/socialite": "^4.2",
         "laravel/tinker": "^1.0",
-        "livewire/livewire": "^0.3.17"
+        "livewire/livewire": "^0.3.17",
+        "socialiteproviders/facebook": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

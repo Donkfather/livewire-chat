@@ -2,8 +2,9 @@
     <div wire:offline class="font-bold text-black bg-red-500 py-2 text-center"> You are now offline.</div>
     <div class="flex w-full h-full">
         <div class="w-64 bg-gray-200 h-full p-4">
+            <a class="text-xs" href="{{route('logout')}}">LOGOUT</a>
             @foreach($users as $people)
-                <div class="flex mb-5 items-center">
+                <div class="mt-3 flex mb-5 items-center">
                     <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
                          alt="user img"
                          class="w-8 h-8 mr-3 rounded-full border-2 border-orange-300"
@@ -40,6 +41,11 @@
                 </div>
             </div>
             <div class="bg-gray-700 w-full align-self-end px-4 py-2">
+                @error('message')
+                <div class="text-red-500">
+                    {{$message}}
+                </div>
+                @enderror
                 <form action="" wire:submit.prevent="sendMessage" class="flex">
                     <input type="text"
                            wire:model="message"
@@ -47,7 +53,7 @@
                            class="w-full rounded-lg h-12 mr-3 px-3"
                     />
                     <input type="submit"
-                           {{strlen($message) <= 3? 'disabled':''}}
+                           {{empty($message) <= 0? 'disabled':''}}
                            class="cursor-pointer bg-blue-400 px-3 rounded-lg text-white font-bold"
                            value="Send"
                     >
