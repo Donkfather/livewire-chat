@@ -15,12 +15,12 @@
             @endforeach
         </div>
         <div class="flex flex-col w-full">
-            <div class="flex-1 flex flex-col px-5 py-2 h-full overflow-y-scroll">
+            <div  class="flex-1 flex flex-col px-5 py-2 h-full">
                 <div class="flex justify-between">
                     <h2 class="font-bold mb-4">Messages ({{$messages->count()}})</h2>
                     <a class="text-xs" href="{{route('logout')}}">LOGOUT</a>
                 </div>
-                <div class="h-full overflow-y-scroll">
+                <div id="messagesWrapper" class="h-full overflow-y-scroll">
                     @foreach ($messages as $message)
                         @if($user && $user->id == $message->user_id)
                             <div class="flex flex-row-reverse ml-auto">
@@ -62,4 +62,20 @@
             </div>
         </div>
     </div>
+    <script>
+        let scrollMessagesWrapper = function(){
+          let el = document.getElementById('messagesWrapper');
+          let scrollHeight = el.scrollHeight;
+          el.scroll({
+            top: scrollHeight,
+            behavior: 'smooth'
+          })
+        }
+
+        scrollMessagesWrapper();
+        window.Echo.channel('messages')
+          .listen('NewMessage', e => {
+            scrollMessagesWrapper()
+          })
+    </script>
 </div>

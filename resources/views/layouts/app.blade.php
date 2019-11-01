@@ -14,13 +14,13 @@
             height: 100%;
         }
     </style>
+    <script src="{{asset('js/app.js')}}"></script>
 </head>
 <body class="h-full">
 <div class="h-full">
     <div class="h-full">
         @yield('content')
     </div>
-    <script src="{{asset('js/app.js')}}"></script>
     @livewireAssets
 </div>
 </body>
