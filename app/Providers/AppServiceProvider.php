@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Gate::define('viewWebSocketsDashboard', function ($user = null) {
+            return in_array($user->email, [
+                'donkfather@yahoo.com'
+            ]);
+        });
     }
 }
