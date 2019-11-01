@@ -4,7 +4,7 @@
         <div class="w-64 bg-gray-200 h-full p-4 hidden sm:block">
             @foreach($users as $people)
                 <div class="mt-3 flex mb-5 items-center">
-                    <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
+                    <img src="{{$people->avatar ?? 'https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg'}}"
                          alt="user img"
                          class="w-8 h-8 mr-3 rounded-full border-2 border-orange-300"
                     >
@@ -24,7 +24,7 @@
                     @foreach ($messages as $message)
                         @if($user && $user->id == $message->user_id)
                             <div class="flex flex-row-reverse ml-auto">
-                                <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
+                                <img src="{{$message->user->avatar ?? 'https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg'}}"
                                      alt="user img"
                                      class="w-6 h-6 rounded-full border-2 border-orange-300"
                                 >
