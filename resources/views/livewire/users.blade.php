@@ -16,8 +16,8 @@
                 class="w-8 h-8 mr-2 rounded-full border-2 border-orange-300"
             >
             <span class="@if($user && $user->id == $people->id) {{'text-green-500'}} @endif">
-                        {{$people->name}}
-                    </span>
+                {{$people->name}}
+            </span>
         </div>
     @endforeach
 </div>
