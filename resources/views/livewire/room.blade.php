@@ -13,6 +13,7 @@
         behavior: 'smooth'
       })
     }
+    Notification.requestPermission();
     let showNotification = function (name, text) {
       if (Notification.permission === 'granted' && document.hidden) {
         let n = new Notification(`${name} wrote:`, {
