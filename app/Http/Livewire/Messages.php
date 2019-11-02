@@ -11,13 +11,13 @@ class Messages extends Component
     public $message = '';
 
     public $listeners = [
-        'echo:messages,NewMessage'              => '$refresh',
+        'echo:messages,NewMessage' => '$refresh',
     ];
 
     public function updatedMessage()
     {
         $this->validate([
-            'message' => 'min:1|max:250'
+            'message' => 'max:250',
         ]);
     }
 

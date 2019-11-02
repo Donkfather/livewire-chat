@@ -8,14 +8,14 @@ use Livewire\Component;
 class Users extends Component
 {
     public $listeners = [
-        'echo:users,NewUser'              => '$refresh',
+        'echo:users,NewUser' => '$refresh',
     ];
 
     public function render()
     {
-        return view('livewire.users',[
-            'user'     => auth()->user(),
-            'users'    => User::where('id','!=',auth()->id())->get(),
+        return view('livewire.users', [
+            'user'  => auth()->user(),
+            'users' => User::where('id', '!=', auth()->id())->get(),
         ]);
     }
 }
