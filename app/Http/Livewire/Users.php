@@ -8,7 +8,7 @@ use Livewire\Component;
 class Users extends Component
 {
     public $listeners = [
-        'echo:users,NewUser' => '$refresh',
+        'echo:presence-chat,NewUser' => '$refresh',
     ];
 
     public function render()

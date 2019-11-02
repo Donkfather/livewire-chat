@@ -21,6 +21,6 @@ class NewUser implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('users');
+        return new PresenceChannel('chat');
     }
 }

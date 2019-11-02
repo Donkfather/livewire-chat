@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Events\NewMessage;
+use App\Events\WritingMessage;
 use App\Message;
 use Livewire\Component;
 
@@ -11,7 +12,7 @@ class Messages extends Component
     public $message = '';
 
     public $listeners = [
-        'echo:messages,NewMessage' => '$refresh',
+        'echo:presence-chat,NewMessage'                             => '$refresh',
     ];
 
     public function updatedMessage()

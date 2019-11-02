@@ -24,11 +24,11 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     wsHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
     wssHost: process.env.MIX_PUSHER_WEBSOCKET_DOMAIN,
-    wsPort: process.env.APP_ENV === 'local' ? 6001: 6002,
-    wssPort: process.env.APP_ENV === 'local' ? 6001: 6002,
+    wsPort: process.env.MIX_PUSHER_WEBSOCKET_PORT,
+    wssPort: process.env.MIX_PUSHER_WEBSOCKET_PORT,
     enabledTransports: ['ws','wss'],
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     disableStats: true,
-    encrypted: true
+    encrypted: true,
 });

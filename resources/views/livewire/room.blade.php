@@ -5,19 +5,19 @@
         @livewire('messages')
     </div>
     <script>
-        let scrollMessagesWrapper = function(){
-          let el = document.getElementById('messagesWrapper');
-          let scrollHeight = el.scrollHeight;
-          el.scroll({
-            top: scrollHeight,
-            behavior: 'smooth'
-          })
-        }
+    let scrollMessagesWrapper = function () {
+      let el = document.getElementById('messagesWrapper');
+      let scrollHeight = el.scrollHeight;
+      el.scroll({
+        top: scrollHeight,
+        behavior: 'smooth'
+      })
+    }
 
-        scrollMessagesWrapper();
-        window.Echo.channel('messages')
-          .listen('NewMessage', e => {
-            scrollMessagesWrapper()
-          })
+    scrollMessagesWrapper();
+    window.Echo.channel('chat')
+      .listen('NewMessage', e => {
+        scrollMessagesWrapper()
+      })
     </script>
 </div>

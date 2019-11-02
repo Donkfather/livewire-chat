@@ -21,6 +21,6 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('messages');
+        return new PresenceChannel('chat');
     }
 }
