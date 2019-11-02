@@ -1422,12 +1422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Donkfather/livewire.git",
-                "reference": "b2ed731c6bb5d33f61189c0ecb20c99bc9f97e04"
+                "reference": "5b136c9397bd31aa84a4e4f9b766502db70212f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Donkfather/livewire/zipball/b2ed731c6bb5d33f61189c0ecb20c99bc9f97e04",
-                "reference": "b2ed731c6bb5d33f61189c0ecb20c99bc9f97e04",
+                "url": "https://api.github.com/repos/Donkfather/livewire/zipball/5b136c9397bd31aa84a4e4f9b766502db70212f2",
+                "reference": "5b136c9397bd31aa84a4e4f9b766502db70212f2",
                 "shasum": ""
             },
             "require": {
@@ -1475,7 +1475,7 @@
             "support": {
                 "source": "https://github.com/Donkfather/livewire/tree/master"
             },
-            "time": "2019-11-02T15:24:03+00:00"
+            "time": "2019-11-02T18:10:08+00:00"
         },
         {
             "name": "monolog/monolog",

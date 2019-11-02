@@ -14,6 +14,7 @@ class Messages extends Component
     public $listeners = [
         'echo:presence-chat,NewMessage' => '$refresh',
         'update'                        => '$refresh',
+        'new-message'                   => '$refresh',
     ];
 
     public function updatedMessage()
@@ -25,13 +26,16 @@ class Messages extends Component
 
     public function sendMessage()
     {
+        if(empty(trim($this->message))){
+            return;
+        }
         $this->validate([
             'message' => 'required|min:1|max:250',
         ]);
 
         Message::create([
             'user_id' => auth()->id() ?? 1,
-            'text'    => $this->message,
+            'text'    => trim($this->message),
         ]);
         event((new NewMessage(auth()->user()->name, $this->message)));
 
