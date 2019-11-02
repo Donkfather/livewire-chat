@@ -6,9 +6,9 @@
                 <div class="mt-3 flex mb-5 items-center">
                     <img src="{{$people->avatar ?? 'https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg'}}"
                          alt="user img"
-                         class="w-8 h-8 mr-3 rounded-full border-2 border-orange-300"
+                         class="w-8 h-8 mr-2 rounded-full border-2 border-orange-300"
                     >
-                    <span class="text-lg font-bold @if($user && $user->id == $people->id) {{'text-green-500'}} @endif">
+                    <span class="@if($user && $user->id == $people->id) {{'text-green-500'}} @endif">
                         {{$people->name}}
                     </span>
                 </div>

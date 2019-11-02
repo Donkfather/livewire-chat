@@ -27,17 +27,23 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $socialUser = Socialite::driver('facebook')->user();
-
+        /** @var User $user */
         $user = User::firstOrCreate([
             'email'       => $socialUser->getEmail(),
             'provider_id' => $socialUser->getId(),
             'provider'    => 'facebook',
         ], [
-            'name'        => $socialUser->getName(),
-            'avatar'      => $socialUser->getAvatar(),
-            'password'    => bcrypt(Str::random(20)),
-            'provider_id' => $socialUser->getId(),
+            'name'     => $socialUser->getName(),
+            'avatar'   => $socialUser->getAvatar(),
+            'password' => bcrypt(Str::random(20)),
         ]);
+
+        if (!$user->wasRecentlyCreated) {
+            $user->update([
+                'name'   => $socialUser->getName(),
+                'avatar' => $socialUser->getAvatar(),
+            ]);
+        }
 
         Auth::login($user);
 
