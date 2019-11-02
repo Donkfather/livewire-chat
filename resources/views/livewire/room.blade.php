@@ -4,6 +4,7 @@
         @livewire('users')
         @livewire('messages')
     </div>
+    <audio src="/assets/sound.mp3" id="new-message-alert"></audio>
     <script>
     let scrollMessagesWrapper = function () {
       let el = document.getElementById('messagesWrapper');
@@ -26,6 +27,9 @@
     window.Echo.join('chat')
       .listen('NewMessage', e => {
         scrollMessagesWrapper()
+        if(document.hidden){
+          document.getElementById('new-message-alert').play()
+        }
         showNotification(e.userName, e.message);
       })
     </script>
