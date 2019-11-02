@@ -4,7 +4,7 @@
             <h2 class="font-bold mb-4">Messages ({{$messages->count()}})</h2>
             <a class="text-xs" href="{{route('logout')}}">LOGOUT</a>
         </div>
-        <div id="messagesWrapper" class="h-full overflow-y-scroll">
+        <div id="messagesWrapper" class="h-full overflow-y-auto">
             @foreach ($messages as $message)
                 @if($user && $user->id == $message->user_id)
                     <div class="flex flex-row-reverse ml-auto">
@@ -19,7 +19,7 @@
                     </div>
                 @else
                     <div class="flex">
-                        <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
+                        <img src="{{$message->user->avatar ?? 'https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg'}}"
                              alt="user img"
                              class="w-6 h-6 rounded-full border-2 border-orange-300"
                         >

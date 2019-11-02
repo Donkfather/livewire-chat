@@ -14,7 +14,7 @@
             height: 100%;
         }
     </style>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{mix('js/app.js')}}"></script>
 </head>
 <body class="h-full">
 <div class="h-full">
