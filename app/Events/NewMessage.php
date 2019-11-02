@@ -15,6 +15,21 @@ class NewMessage implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
+     * @var string
+     */
+    public $userName;
+    /**
+     * @var string
+     */
+    public $message;
+
+    public function __construct(string $userName, string $message)
+    {
+        $this->userName = $userName;
+        $this->message = $message;
+        $this->dontBroadcastToCurrentUser();
+    }
+    /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array

@@ -32,7 +32,7 @@ class Messages extends Component
             'user_id' => auth()->id() ?? 1,
             'text'    => $this->message,
         ]);
-        event(new NewMessage);
+        event((new NewMessage(auth()->user()->name, $this->message)));
 
         $this->message = '';
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41807a2669363227035ebb0071f61b65",
+    "content-hash": "34da2cdc11d3d864b5ac1573cdbf3a76",
     "packages": [
         {
             "name": "beyondcode/laravel-dump-server",
@@ -1418,16 +1418,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.17",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/livewire/livewire.git",
-                "reference": "e363058c7a8c88b62f59b77bb85121e46f3262b3"
+                "url": "https://github.com/Donkfather/livewire.git",
+                "reference": "b2ed731c6bb5d33f61189c0ecb20c99bc9f97e04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/e363058c7a8c88b62f59b77bb85121e46f3262b3",
-                "reference": "e363058c7a8c88b62f59b77bb85121e46f3262b3",
+                "url": "https://api.github.com/repos/Donkfather/livewire/zipball/b2ed731c6bb5d33f61189c0ecb20c99bc9f97e04",
+                "reference": "b2ed731c6bb5d33f61189c0ecb20c99bc9f97e04",
                 "shasum": ""
             },
             "require": {
@@ -1456,7 +1456,12 @@
                     "Livewire\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/",
+                    "App\\": "vendor/orchestra/testbench-core/laravel/app"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1467,7 +1472,10 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-10-11T16:56:26+00:00"
+            "support": {
+                "source": "https://github.com/Donkfather/livewire/tree/master"
+            },
+            "time": "2019-11-02T15:24:03+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6457,7 +6465,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "livewire/livewire": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

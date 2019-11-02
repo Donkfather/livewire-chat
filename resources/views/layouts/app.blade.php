@@ -22,7 +22,12 @@
     <div class="h-full">
         @yield('content')
     </div>
-    @livewireAssets
+    <script>
+    window.Echo.connector.pusher.connection.bind('connected', function () {
+      window.XSocketId = window.Echo.socketId();
+    });
+    </script>
+    @livewireAssets(['driver'=> 'echo_http'])
 </div>
 </body>
 </html>

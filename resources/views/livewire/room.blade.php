@@ -13,11 +13,19 @@
         behavior: 'smooth'
       })
     }
+    let showNotification = function (name, text) {
+      if (Notification.permission === 'granted' && document.hidden) {
+        let n = new Notification(`${name} wrote:`, {
+          body: text
+        })
+      }
+    }
 
     scrollMessagesWrapper();
-    window.Echo.channel('chat')
+    window.Echo.join('chat')
       .listen('NewMessage', e => {
         scrollMessagesWrapper()
+        showNotification(e.userName, e.message);
       })
     </script>
 </div>
