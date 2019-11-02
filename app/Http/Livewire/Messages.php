@@ -12,7 +12,8 @@ class Messages extends Component
     public $message = '';
 
     public $listeners = [
-        'echo:presence-chat,NewMessage'                             => '$refresh',
+        'echo:presence-chat,NewMessage' => '$refresh',
+        'update'                        => '$refresh',
     ];
 
     public function updatedMessage()

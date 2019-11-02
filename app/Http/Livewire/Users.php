@@ -9,6 +9,7 @@ class Users extends Component
 {
     public $listeners = [
         'echo:presence-chat,NewUser' => '$refresh',
+        'update' => '$refresh',
     ];
 
     public function render()

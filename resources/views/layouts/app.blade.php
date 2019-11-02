@@ -28,6 +28,14 @@
     });
     </script>
     @livewireAssets(['driver'=> 'echo_http'])
+    <script>
+    document.addEventListener("visibilitychange", function() {
+      console.log( document.hidden );
+      if(!document.hidden) {
+        window.Livewire.emit('update')
+      }
+    });
+    </script>
 </div>
 </body>
 </html>
