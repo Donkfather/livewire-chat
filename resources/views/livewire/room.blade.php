@@ -28,7 +28,10 @@
                                      alt="user img"
                                      class="w-6 h-6 rounded-full border-2 border-orange-300"
                                 >
-                                <p class="mt-6 py-2 px-3 bg-blue-200 rounded-lg mb-4">{{ $message->text }}</p>
+                                <div class="flex flex-col mr-2 items-end pt-1">
+                                    <span class="text-xs text-gray-500 text-right mb-2">{{$message->user->name}}</span>
+                                    <p class="py-2 px-3 bg-blue-200 rounded-lg mb-4">{{ $message->text }}</p>
+                                </div>
                             </div>
                         @else
                             <div class="flex">
@@ -36,7 +39,10 @@
                                      alt="user img"
                                      class="w-6 h-6 rounded-full border-2 border-orange-300"
                                 >
-                                <p class="mt-6 py-2 px-3 bg-gray-200 rounded-lg mb-4">{{ $message->text }}</p>
+                                <div class="flex flex-col items-start ml-2 pt-1">
+                                    <span class="mb-2 text-xs text-gray-500">{{$message->user->name}}</span>
+                                    <p class="py-2 px-3 bg-gray-200 rounded-lg mb-4">{{ $message->text }}</p>
+                                </div>
                             </div>
                         @endif
                     @endforeach
