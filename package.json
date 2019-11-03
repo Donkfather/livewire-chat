@@ -20,6 +20,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "hammerjs": "^2.0.8",
         "laravel-echo": "^1.6.1",
         "pusher-js": "^5.0.2"
     }

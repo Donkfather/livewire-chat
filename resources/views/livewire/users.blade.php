@@ -1,4 +1,4 @@
-<div class="w-64 bg-gray-200 h-full p-4 hidden sm:block">
+<div class="w-64 h-full p-4 overflow-y-auto">
     <div class="mt-3 flex mb-5 items-center">
         <img src="{{$user->avatar ?? 'https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg'}}"
              alt="user img"
