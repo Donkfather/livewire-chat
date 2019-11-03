@@ -1,8 +1,5 @@
-<div class="flex flex-col w-full">
+<div class="flex flex-col w-full h-full">
     <div class="flex-1 flex flex-col pl-3 py-2 h-full">
-        <div class="flex justify-between pr-2">
-            <a class="text-xs ml-auto" href="{{route('logout')}}">LOGOUT</a>
-        </div>
         <div id="messagesWrapper" class="h-full overflow-y-auto pr-2">
             @foreach ($messages as $message)
                 @if($user && $user->id == $message->user_id)

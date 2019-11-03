@@ -19,9 +19,7 @@
 </head>
 <body class="h-full">
 <div class="h-full">
-    <div class="h-full">
-        @yield('content')
-    </div>
+    @yield('content')
     <script>
     window.Echo.connector.pusher.connection.bind('connected', function () {
       window.XSocketId = window.Echo.socketId();
@@ -29,9 +27,9 @@
     </script>
     @livewireAssets(['driver'=> 'echo_http'])
     <script>
-    document.addEventListener("visibilitychange", function() {
-      console.log( document.hidden );
-      if(!document.hidden) {
+    document.addEventListener("visibilitychange", function () {
+      console.log(document.hidden);
+      if (!document.hidden) {
         window.Livewire.emit('update')
       }
     });

@@ -2,7 +2,15 @@
     <div wire:offline class="font-bold text-black bg-red-500 py-2 text-center"> You are now offline.</div>
     <div class="flex w-full h-full">
         @livewire('users')
-        @livewire('messages')
+        <div class="flex flex-col w-full">
+            <div class="h-12 flex-shrink-0 flex items-center justify-end pr-2">
+                <a class="text-xs ml-auto" href="{{route('logout')}}">LOGOUT</a>
+            </div>
+            <div class="flex h-full">
+                @livewire('messages')
+                <div class="flex w-1/4"></div>
+            </div>
+        </div>
     </div>
     <audio src="/assets/sound.mp3" id="new-message-alert"></audio>
     <script>
