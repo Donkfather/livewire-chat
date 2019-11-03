@@ -23,21 +23,63 @@ class Drawer {
 
     constructor(el) {
         this.openClass = 'open';
-        this.el = el
-
+        this.el = document.querySelector(`div.drawer[data-drawer="${el}"]`);
+        document.addEventListener('click', e => {
+            if (this.shouldCloseOnClick(e)) {
+                drawer.close()
+            }
+        });
+        this.initSwipeEvents()
         return this;
+    }
+
+    initSwipeEvents() {
+        let messagesSwipeManager = new Hammer.Manager(document.querySelector('div#messagesWrapper'));
+        let OpenDrawerSwipe = new Hammer.Swipe({direction: Hammer.DIRECTION_RIGHT});
+        messagesSwipeManager.add(OpenDrawerSwipe);
+        messagesSwipeManager.on('swipe', () => this.open())
     }
 
     open() {
         this.el.classList.add('open')
+        this.addOverlay()
     }
 
     close() {
         this.el.classList.remove('open')
+        this.removeOverlay()
+    }
+
+    shouldCloseOnClick(e) {
+        return this.isOpen() &&
+            (!this.el.contains(e.target) && !e.target.classList.contains('drawer-trigger')
+                || e.target.classList.contains('drawer-overlay'))
+    }
+
+    addOverlay() {
+        let overlay = document.createElement('div')
+        overlay.classList.add("drawer-overlay", "absolute", "inset-0", "bg-black", "opacity-50", "z-10")
+        document.querySelector('body').insertBefore(overlay, document.body.firstChild)
+
+        let CloseDrawerSwipe = new Hammer.Swipe({direction: Hammer.DIRECTION_LEFT});
+        let drawerSwipeManager = new Hammer.Manager(document.querySelector('div.drawer-overlay'));
+        drawerSwipeManager.add(CloseDrawerSwipe)
+        drawerSwipeManager.on('swipe', () => this.close())
+    }
+
+    removeOverlay() {
+        let overlay = document.querySelector('body>div.drawer-overlay');
+        if (overlay) {
+            overlay.remove()
+        }
     }
 
     toggle() {
-        this.el.classList.toggle('open')
+        if (this.isOpen()) {
+            this.close()
+        } else {
+            this.open()
+        }
     }
 
     isOpen() {
@@ -50,26 +92,10 @@ class Drawer {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    (() => {
-        window.drawer = new Drawer(document.getElementsByClassName('drawer')[0])
-        window.burger = document.getElementById('burgerButton');
-        let messagesSwipeManager = new Hammer.Manager(document.getElementById('messagesWrapper'));
-        let OpenDrawerSwipe = new Hammer.Swipe();
-        messagesSwipeManager.add(OpenDrawerSwipe);
-        messagesSwipeManager.on('swiperight', (e) => {
-            drawer.open()
-        })
-        messagesSwipeManager.on('swipeleft', (e) => {
-            drawer.close()
-        })
-        document.addEventListener('click', e => {
-            if (drawer.isOpen() && (!drawer.contains(e.target) && !burger.contains(e.target))) {
-                drawer.close()
-            }
-        });
-        scrollMessagesWrapper();
-        Notification.requestPermission();
-    })();
+    window.drawer = new Drawer('users')
+    window.burger = document.getElementById('burgerButton');
+    scrollMessagesWrapper();
+    Notification.requestPermission();
 })
 
 

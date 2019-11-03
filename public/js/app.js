@@ -31756,27 +31756,86 @@ var Drawer =
 /*#__PURE__*/
 function () {
   function Drawer(el) {
+    var _this = this;
+
     _classCallCheck(this, Drawer);
 
     this.openClass = 'open';
-    this.el = el;
+    this.el = document.querySelector("div.drawer[data-drawer=\"".concat(el, "\"]"));
+    document.addEventListener('click', function (e) {
+      if (_this.shouldCloseOnClick(e)) {
+        drawer.close();
+      }
+    });
+    this.initSwipeEvents();
     return this;
   }
 
   _createClass(Drawer, [{
+    key: "initSwipeEvents",
+    value: function initSwipeEvents() {
+      var _this2 = this;
+
+      var messagesSwipeManager = new hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.Manager(document.querySelector('div#messagesWrapper'));
+      var OpenDrawerSwipe = new hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.Swipe({
+        direction: hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.DIRECTION_RIGHT
+      });
+      messagesSwipeManager.add(OpenDrawerSwipe);
+      messagesSwipeManager.on('swipe', function () {
+        return _this2.open();
+      });
+    }
+  }, {
     key: "open",
     value: function open() {
       this.el.classList.add('open');
+      this.addOverlay();
     }
   }, {
     key: "close",
     value: function close() {
       this.el.classList.remove('open');
+      this.removeOverlay();
+    }
+  }, {
+    key: "shouldCloseOnClick",
+    value: function shouldCloseOnClick(e) {
+      return this.isOpen() && (!this.el.contains(e.target) && !e.target.classList.contains('drawer-trigger') || e.target.classList.contains('drawer-overlay'));
+    }
+  }, {
+    key: "addOverlay",
+    value: function addOverlay() {
+      var _this3 = this;
+
+      var overlay = document.createElement('div');
+      overlay.classList.add("drawer-overlay", "absolute", "inset-0", "bg-black", "opacity-50", "z-10");
+      document.querySelector('body').insertBefore(overlay, document.body.firstChild);
+      var CloseDrawerSwipe = new hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.Swipe({
+        direction: hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.DIRECTION_LEFT
+      });
+      var drawerSwipeManager = new hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.Manager(document.querySelector('div.drawer-overlay'));
+      drawerSwipeManager.add(CloseDrawerSwipe);
+      drawerSwipeManager.on('swipe', function () {
+        return _this3.close();
+      });
+    }
+  }, {
+    key: "removeOverlay",
+    value: function removeOverlay() {
+      var overlay = document.querySelector('body>div.drawer-overlay');
+
+      if (overlay) {
+        overlay.remove();
+      }
     }
   }, {
     key: "toggle",
     value: function toggle() {
-      this.el.classList.toggle('open');
+      if (this.isOpen()) {
+        this.close();
+      } else {
+        this.open();
+      }
     }
   }, {
     key: "isOpen",
@@ -31794,26 +31853,10 @@ function () {
 }();
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  (function () {
-    window.drawer = new Drawer(document.getElementsByClassName('drawer')[0]);
-    window.burger = document.getElementById('burgerButton');
-    var messagesSwipeManager = new hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.Manager(document.getElementById('messagesWrapper'));
-    var OpenDrawerSwipe = new hammerjs__WEBPACK_IMPORTED_MODULE_0___default.a.Swipe();
-    messagesSwipeManager.add(OpenDrawerSwipe);
-    messagesSwipeManager.on('swiperight', function (e) {
-      drawer.open();
-    });
-    messagesSwipeManager.on('swipeleft', function (e) {
-      drawer.close();
-    });
-    document.addEventListener('click', function (e) {
-      if (drawer.isOpen() && !drawer.contains(e.target) && !burger.contains(e.target)) {
-        drawer.close();
-      }
-    });
-    scrollMessagesWrapper();
-    Notification.requestPermission();
-  })();
+  window.drawer = new Drawer('users');
+  window.burger = document.getElementById('burgerButton');
+  scrollMessagesWrapper();
+  Notification.requestPermission();
 });
 
 /***/ }),
